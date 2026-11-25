@@ -1,0 +1,20 @@
+{
+  "name": "gpu-ecc-drain-planner",
+  "version": "1.0.0",
+  "description": "Offline planner for GPU ECC error drain ordering, task migration, checkpoint waits and spare allocation.",
+  "type": "module",
+  "main": "src/drain-planner.js",
+  "exports": {
+    ".": "./src/drain-planner.js"
+  },
+  "bin": {
+    "gpu-drain-plan": "src/cli.js"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=24.16.0"
+  },
+  "license": "MIT"
+}

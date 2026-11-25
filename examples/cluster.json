@@ -1,0 +1,101 @@
+{
+  "config": {
+    "maxUncheckpointedWaitMinutes": 30,
+    "migrationOverheadMinutes": 5
+  },
+  "gpus": [
+    {
+      "id": "gpu-0",
+      "model": "A100-80GB",
+      "faultDomain": "rack-a",
+      "eccHistory": [
+        { "minutesAgo": 120, "correctable": 4, "uncorrectable": 0 },
+        { "minutesAgo": 60, "correctable": 20, "uncorrectable": 1 },
+        { "minutesAgo": 0, "correctable": 41, "uncorrectable": 2 }
+      ],
+      "xidEvents": [
+        { "code": 48, "minutesAgo": 18 }
+      ]
+    },
+    {
+      "id": "gpu-1",
+      "model": "A100-80GB",
+      "faultDomain": "rack-a",
+      "eccHistory": [
+        { "minutesAgo": 60, "correctable": 0, "uncorrectable": 0 },
+        { "minutesAgo": 0, "correctable": 60, "uncorrectable": 0 }
+      ],
+      "xidEvents": [
+        { "code": 92, "minutesAgo": 9 }
+      ]
+    },
+    {
+      "id": "gpu-2",
+      "model": "A100-80GB",
+      "faultDomain": "rack-b",
+      "eccHistory": [
+        { "minutesAgo": 60, "correctable": 0, "uncorrectable": 0 },
+        { "minutesAgo": 0, "correctable": 12, "uncorrectable": 0 }
+      ],
+      "xidEvents": []
+    },
+    {
+      "id": "gpu-3",
+      "model": "H100-80GB",
+      "faultDomain": "rack-c",
+      "eccHistory": [
+        { "minutesAgo": 120, "correctable": 2, "uncorrectable": 0 },
+        { "minutesAgo": 60, "correctable": 5, "uncorrectable": 0 },
+        { "minutesAgo": 0, "correctable": 9, "uncorrectable": 0 }
+      ],
+      "xidEvents": []
+    },
+    {
+      "id": "gpu-4",
+      "model": "A100-80GB",
+      "faultDomain": "rack-b",
+      "eccHistory": [
+        { "minutesAgo": 60, "correctable": 0, "uncorrectable": 0 },
+        { "minutesAgo": 0, "correctable": 0, "uncorrectable": 0 }
+      ],
+      "xidEvents": []
+    }
+  ],
+  "tasks": [
+    {
+      "id": "job-alpha",
+      "gpuId": "gpu-0",
+      "remainingMinutes": 420,
+      "checkpoint": { "available": true, "ageMinutes": 8 }
+    },
+    {
+      "id": "job-beta",
+      "gpuId": "gpu-0",
+      "remainingMinutes": 600,
+      "checkpoint": { "available": false, "nextCheckpointEtaMinutes": 180 }
+    },
+    {
+      "id": "job-gamma",
+      "gpuId": "gpu-1",
+      "remainingMinutes": 240,
+      "checkpoint": { "available": false, "nextCheckpointEtaMinutes": 12 }
+    },
+    {
+      "id": "job-delta",
+      "gpuId": "gpu-2",
+      "remainingMinutes": 20,
+      "checkpoint": null
+    },
+    {
+      "id": "job-epsilon",
+      "gpuId": "gpu-3",
+      "remainingMinutes": 600,
+      "checkpoint": { "available": true, "ageMinutes": 25 }
+    }
+  ],
+  "spareGpus": [
+    { "id": "spare-a1", "model": "A100-80GB", "faultDomain": "rack-b" },
+    { "id": "spare-a2", "model": "A100-80GB", "faultDomain": "rack-a" },
+    { "id": "spare-h1", "model": "H100-80GB", "faultDomain": "rack-c" }
+  ]
+}
